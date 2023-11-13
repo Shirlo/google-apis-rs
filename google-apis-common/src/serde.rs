@@ -160,8 +160,8 @@ pub mod urlsafe_base64 {
         where
             D: Deserializer<'de>,
         {
-            let s: &str = Deserialize::deserialize(deserializer)?;
-            base64::decode_config(s, base64::URL_SAFE).map_err(serde::de::Error::custom)
+            let s: String = Deserialize::deserialize(deserializer)?;
+            base64::decode_config(&s, base64::URL_SAFE).map_err(serde::de::Error::custom)
         }
     }
 }
